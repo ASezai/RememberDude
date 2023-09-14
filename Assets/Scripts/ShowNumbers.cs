@@ -9,6 +9,8 @@ public class ShowNumbers : MonoBehaviour
     private const int MiNY = -4;
     private const int MAXY = 4;
 
+    private List<Vector2> availablePositions = new List<Vector2>();
+
     private int posX;
     private int posY;
     private int numberCount = 0;
@@ -18,6 +20,16 @@ public class ShowNumbers : MonoBehaviour
     public List<GameObject> Numbers;
 
     //public GameManager GameManager; // NullReferenceMistake-The code is not working
+    private void Start()
+    {
+        for (float x = MiNX; x <= MAXX; x++)
+        {
+            for (float y = MiNY; y <= MAXY; y++)
+            {
+                availablePositions.Add(new Vector2(x, y));
+            }
+        }
+    }
 
     private void OnMouseDown()
     {
@@ -34,7 +46,7 @@ public class ShowNumbers : MonoBehaviour
             gameObject.SetActive(false);
             for (int i = 0; i < Numbers.Count; i++)
             {
-                spawnPosition = PositionProducer();
+                spawnPosition = GetRandomPosition();
                 numberCount++;
                 Instantiate(Numbers[i], spawnPosition, Quaternion.identity); // Spawn in generated random location
             }
@@ -74,4 +86,6 @@ public class ShowNumbers : MonoBehaviour
         nexPosition = new Vector2(posX, posY);
         return nexPosition;
     }
+
+    
 }
