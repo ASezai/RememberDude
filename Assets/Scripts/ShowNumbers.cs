@@ -87,5 +87,18 @@ public class ShowNumbers : MonoBehaviour
         return nexPosition;
     }
 
-    
+    private Vector2 GetRandomPosition()
+    {
+        if (availablePositions.Count == 0)
+        {
+            Debug.LogWarning("Kullanýlabilir pozisyon kalmadý!");
+            return Vector2.zero;
+        }
+
+        int randomIndex = Random.Range(0, availablePositions.Count);
+        Vector2 randomPosition = availablePositions[randomIndex];
+        availablePositions.RemoveAt(randomIndex); // Kullanýlan pozisyonu çýkar
+
+        return randomPosition;
+    }
 }
