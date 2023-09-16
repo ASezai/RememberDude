@@ -7,17 +7,16 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
 
-    public TextMeshProUGUI timeText;
-    public static int timeStart = 0;
-
+    public TextMeshProUGUI TimeText;
+    public static int TimeStart = 0;
     public static float time;
 
     private void Update()
     {
-        if (timeStart == 1)
+        if (TimeStart == 1)
         {
             time = time + Time.deltaTime;
-            timeText.text = time.ToString("0.00");
+            TimeText.text = time.ToString("0.00");
         }
     }
 }
