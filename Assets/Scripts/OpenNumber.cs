@@ -12,7 +12,7 @@ public class OpenNumber : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+
         if (Input.GetMouseButton(0))
         {
             gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", turnUpNumbers);
@@ -28,16 +28,16 @@ public class OpenNumber : MonoBehaviour
             {
                 gameObject.SetActive(false);
             }
-            else if(number != i)  // Game OVer and Restart
+            else if (number != i)  // Game OVer and Restart
             {
-                Timer.TimeStart = 0;
+                GameManager.TimeStart = 0;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 GameManager.gameOver = true;
                 numbersValue = 0;
             }
             if (number == i && i == 9) // If all numbers are opened correctly, the game ends!!
             {
-                Timer.TimeStart = 0;
+                GameManager.TimeStart = 0;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
                 GameManager.gameSucces = true;
                 GameManager.gameOver = false;

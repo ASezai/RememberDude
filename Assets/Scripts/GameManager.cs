@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
     public static bool gameOver = false;
     public static bool gameSucces = false;
 
-    private string score;
-
     public GameObject gameOverPanel;
     public GameObject scorePanel;
 
     public TextMeshProUGUI scoreTimeText;
+
+    public TextMeshProUGUI TimeText;
+    public static int TimeStart = 0;
+    public static float time;
     private void Update()
     {
         if (gameOver)
@@ -27,6 +29,11 @@ public class GameManager : MonoBehaviour
         if (!gameOver && gameSucces)
         {
             Score();
+        }
+        if (TimeStart == 1)
+        {
+            time = time + Time.deltaTime;
+            TimeText.text = time.ToString("0.00");
         }
     }
     public void GameHasStarted()
@@ -42,8 +49,7 @@ public class GameManager : MonoBehaviour
     }
     public void Score()
     {
-        score = Timer.time.ToString();
-        scoreTimeText.text = score;
+        scoreTimeText.text = time.ToString();
         scorePanel.SetActive(true);
     }
 }

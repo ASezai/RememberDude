@@ -32,9 +32,9 @@ public class ShowNumbers : MonoBehaviour
             GameManager.gameOver = false;
             GameManager.gameSucces = false;
             StartGame.turnDownNumbers = 0;
-            Timer.TimeStart = 1;
-            Timer.time = 0;
-            
+            GameManager.TimeStart = 1;
+            GameManager.time = 0;
+
             gameObject.SetActive(false);
             for (int i = 0; i < Numbers.Count; i++)
             {
@@ -49,13 +49,12 @@ public class ShowNumbers : MonoBehaviour
     {
         if (availablePositions.Count == 0)
         {
-            Debug.LogWarning("Kullanýlabilir pozisyon kalmadý!");
             return Vector2.zero;
         }
 
         int randomIndex = Random.Range(0, availablePositions.Count);
         Vector2 randomPosition = availablePositions[randomIndex];
-        availablePositions.RemoveAt(randomIndex); // Kullanýlan pozisyonu çýkar
+        availablePositions.RemoveAt(randomIndex); // Kullanlan pozisyonu çkar
 
         return randomPosition;
     }

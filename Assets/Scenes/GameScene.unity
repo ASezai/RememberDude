@@ -631,6 +631,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1094041210}
   scorePanel: {fileID: 1305849536}
   scoreTimeText: {fileID: 256873665}
+  TimeText: {fileID: 1765668099}
 --- !u!4 &528503191
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,7 +1012,6 @@ GameObject:
   - component: {fileID: 1765668097}
   - component: {fileID: 1765668100}
   - component: {fileID: 1765668099}
-  - component: {fileID: 1765668098}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -1039,19 +1039,6 @@ RectTransform:
   m_AnchoredPosition: {x: 3.2, y: 257.5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1765668098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765668096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee72574a713093d4c857a917c17cacd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeText: {fileID: 1765668099}
 --- !u!114 &1765668099
 MonoBehaviour:
   m_ObjectHideFlags: 0
