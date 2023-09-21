@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StartGame : MonoBehaviour
 {
-    public static int turnDownNumbers = 0;
+    public static int GameHasStarted = 0;
 
     private void OnMouseDown()
     {
         if (Input.GetMouseButton(0))
         {
-            OpenNumber.numbersValue = 2;
-            turnDownNumbers = 1;
+            OpenNumber.SearchedNumber = 2;
+            GameHasStarted = 1;
             gameObject.SetActive(false);
         }
     }

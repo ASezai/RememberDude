@@ -631,7 +631,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1094041210}
   scorePanel: {fileID: 1305849536}
   scoreTimeText: {fileID: 256873665}
-  TimeText: {fileID: 1765668099}
+  timeText: {fileID: 1765668099}
 --- !u!4 &528503191
 Transform:
   m_ObjectHideFlags: 0

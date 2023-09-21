@@ -29,17 +29,17 @@ public class ShowNumbers : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            GameManager.gameOver = false;
-            GameManager.gameSucces = false;
-            StartGame.turnDownNumbers = 0;
-            GameManager.TimeStart = 1;
-            GameManager.time = 0;
+            StartGame.GameHasStarted = 0;
+            GameManager.IsGameOver = false;
+            GameManager.IsGameSucces = false;
+            GameManager.TimeHasStarted = true;
+            GameManager.Timer = 0;
 
             gameObject.SetActive(false);
             for (int i = 0; i < Numbers.Count; i++)
             {
                 spawnPosition = GetRandomPosition();
-                Instantiate(Numbers[i], spawnPosition, Quaternion.identity); // Spawn in generated random location
+                Instantiate(Numbers[i], spawnPosition, Quaternion.identity);
             }
         }
     }

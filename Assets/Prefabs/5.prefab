@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22b70f00943f3c41bf9d210d581107f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numbersValue: 1
-  numberValue: 5
+  clickedNumber: 5
 --- !u!61 &2494531992867053426
 BoxCollider2D:
   m_ObjectHideFlags: 0

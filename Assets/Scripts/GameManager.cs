@@ -5,51 +5,48 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool gameOver = false;
-    public static bool gameSucces = false;
+    public static bool IsGameOver = false;
+    public static bool IsGameSucces = false;
+    public static bool TimeHasStarted = false;
+    public static float Timer;
 
-    public GameObject gameOverPanel;
-    public GameObject scorePanel;
-
-    public TextMeshProUGUI scoreTimeText;
-
-    public TextMeshProUGUI TimeText;
-    public static int TimeStart = 0;
-    public static float time;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject scorePanel;
+    [SerializeField] private TextMeshProUGUI scoreTimeText;
+    [SerializeField] private TextMeshProUGUI timeText;
+    
     private void Update()
     {
-        if (gameOver)
+        if (IsGameOver)
         {
             GameOver();
         }
-        else if (!gameOver)
+        else if (!IsGameOver)
         {
             GameHasStarted();
         }
-        if (!gameOver && gameSucces)
+        if (!IsGameOver && IsGameSucces)
         {
             Score();
         }
-        if (TimeStart == 1)
+        if (TimeHasStarted)
         {
-            time = time + Time.deltaTime;
-            TimeText.text = time.ToString("0.00");
+            Timer = Timer + Time.deltaTime;
+            timeText.text = Timer.ToString("0.00");
         }
     }
     public void GameHasStarted()
     {
         gameOverPanel.SetActive(false);
         scorePanel.SetActive(false);
-        //gameStarted = false;
     }
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-        //gameOver = false;
     }
     public void Score()
     {
-        scoreTimeText.text = time.ToString();
+        scoreTimeText.text = Timer.ToString();
         scorePanel.SetActive(true);
     }
 }

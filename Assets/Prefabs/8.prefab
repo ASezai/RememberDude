@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22b70f00943f3c41bf9d210d581107f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numbersValue: 1
-  numberValue: 8
+  clickedNumber: 8
 --- !u!61 &8820692337263259196
 BoxCollider2D:
   m_ObjectHideFlags: 0

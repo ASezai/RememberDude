@@ -5,45 +5,43 @@ using UnityEngine.SceneManagement;
 
 public class OpenNumber : MonoBehaviour
 {
-    Color turnUpNumbers = new Color(1f, 1f, 1f, 1f);
+    Color UncoverColor = new Color(1f, 1f, 1f, 1f);
 
-    public static int numbersValue;
-    [SerializeField] private int numberValue;
+    [SerializeField] private int clickedNumber;
+
+    public static int SearchedNumber;
 
     private void OnMouseDown()
     {
 
         if (Input.GetMouseButton(0))
         {
-            gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", turnUpNumbers);
-            CheckNumber(numberValue);
+            gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", UncoverColor);
+            CheckNumber(clickedNumber);
         }
     }
 
-    public void CheckNumber(int number)
+    public void CheckNumber(int ClickedNumber)
     {
-        for (int i = numbersValue; i < numbersValue + 1; i++)
+        if (ClickedNumber == SearchedNumber) // Continue
         {
-            if (number == i) // Continue
-            {
-                gameObject.SetActive(false);
-            }
-            else if (number != i)  // Game OVer and Restart
-            {
-                GameManager.TimeStart = 0;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                GameManager.gameOver = true;
-                numbersValue = 0;
-            }
-            if (number == i && i == 9) // If all numbers are opened correctly, the game ends!!
-            {
-                GameManager.TimeStart = 0;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                GameManager.gameSucces = true;
-                GameManager.gameOver = false;
-                numbersValue = 0;
-            }
+            gameObject.SetActive(false);
         }
-        numbersValue = numbersValue + 1;
+        else if (ClickedNumber != SearchedNumber)  // Game Over and Restart
+        {
+            GameManager.TimeHasStarted = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.IsGameOver = true;
+            SearchedNumber = 0;
+        }
+        if (ClickedNumber == SearchedNumber && SearchedNumber == 9) // If all numbers are opened correctly, the game ends
+        {
+            GameManager.TimeHasStarted = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.IsGameSucces = true;
+            GameManager.IsGameOver = false;
+            SearchedNumber = 0;
+        }
+        SearchedNumber = SearchedNumber + 1;
     }
 }
