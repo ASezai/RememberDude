@@ -20,17 +20,18 @@ public class ShowNumbers : MonoBehaviour
         {
             FillPositions();
             Debug.Log(OpenNumber.SearchedNumber);
+            Debug.Log(GameManager.LevelNumberCount);
 
             OpenNumber.GameHasStarted = 0;
 
             GameManager.IsGameOver = false;
-            GameManager.IsGameSucces = false;
+            GameManager.IsGameSuccess = false;
             GameManager.TimeHasStarted = true;
-            GameManager.Timer = 0;
+            GameManager.Timer = GameManager.LevelNumberCount;
 
             gameObject.SetActive(false);
 
-            for (int i = 0; i < Numbers.Count; i++)
+            for (int i = 0; i < GameManager.LevelNumberCount; i++)
             {
                 spawnPosition = GetRandomPosition();
                 Instantiate(Numbers[i], spawnPosition, Quaternion.identity);

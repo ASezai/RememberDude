@@ -45,7 +45,7 @@ public class OpenNumber : MonoBehaviour
         if (ClickedNumber == SearchedNumber && SearchedNumber == 9) // If all numbers are opened correctly, the game ends
         {
             GameManager.TimeHasStarted = false;
-            GameManager.IsGameSucces = true;
+            GameManager.IsGameSuccess = true;
             GameManager.IsGameOver = false;
             SearchedNumber = 0;
         }

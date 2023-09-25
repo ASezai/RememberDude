@@ -6,19 +6,21 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static bool IsGameOver = false;
-    public static bool IsGameSucces = false;
+    public static bool IsGameSuccess = false;
     public static bool TimeHasStarted = false;
-    public static float Timer;
+    public static float Timer = 1;
+    public static int LevelNumberCount { get; private set; } = 9 ;
 
     [SerializeField] private GameObject zero;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject scorePanel;
     [SerializeField] private TextMeshProUGUI scoreTimeText;
     [SerializeField] private TextMeshProUGUI timeText;
-    
+
+
     private void Update()
     {
-        if (IsGameOver)
+        if (IsGameOver || Timer <= 0)
         {
             GameOver();
             zero.SetActive(true);
@@ -27,14 +29,14 @@ public class GameManager : MonoBehaviour
         {
             GameHasStarted();
         }
-        if (!IsGameOver && IsGameSucces)
+        if (!IsGameOver && IsGameSuccess)
         {
             Score();
             zero.SetActive(true);
         }
         if (TimeHasStarted)
         {
-            Timer = Timer + Time.deltaTime;
+            Timer = Timer - Time.deltaTime;
             timeText.text = Timer.ToString("0.00");
         }
     }
@@ -46,10 +48,15 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        IsGameOver = true;
+        TimeHasStarted = false;
+        LevelNumberCount = 9;
     }
     public void Score()
     {
+        IsGameSuccess = false;
         scoreTimeText.text = Timer.ToString();
         scorePanel.SetActive(true);
+        LevelNumberCount = LevelNumberCount + 2;
     }
 }
