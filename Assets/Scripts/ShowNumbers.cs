@@ -14,28 +14,22 @@ public class ShowNumbers : MonoBehaviour
 
     [SerializeField] private List<GameObject> Numbers;
 
-    private void Start()
-    {
-        for (float x = MiNX; x <= MAXX; x++)
-        {
-            for (float y = MiNY; y <= MAXY; y++)
-            {
-                availablePositions.Add(new Vector2(x, y));
-            }
-        }
-    }
-
     private void OnMouseDown()
     {
         if (Input.GetMouseButton(0))
         {
-            StartGame.GameHasStarted = 0;
+            FillPositions();
+            Debug.Log(OpenNumber.SearchedNumber);
+
+            OpenNumber.GameHasStarted = 0;
+
             GameManager.IsGameOver = false;
             GameManager.IsGameSucces = false;
             GameManager.TimeHasStarted = true;
             GameManager.Timer = 0;
 
             gameObject.SetActive(false);
+
             for (int i = 0; i < Numbers.Count; i++)
             {
                 spawnPosition = GetRandomPosition();
@@ -49,6 +43,7 @@ public class ShowNumbers : MonoBehaviour
     {
         if (availablePositions.Count == 0)
         {
+            Debug.Log("pos yok");
             return Vector2.zero;
         }
 
@@ -57,5 +52,18 @@ public class ShowNumbers : MonoBehaviour
         availablePositions.RemoveAt(randomIndex); // Kullanlan pozisyonu çkar
 
         return randomPosition;
+    }
+
+    private void FillPositions()
+    {
+        availablePositions.Clear(); // Önceki pozisyonlarý temizle
+
+        for (float x = MiNX; x <= MAXX; x++)
+        {
+            for (float y = MiNY; y <= MAXY; y++)
+            {
+                availablePositions.Add(new Vector2(x, y));
+            }
+        }
     }
 }

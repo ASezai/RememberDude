@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static bool TimeHasStarted = false;
     public static float Timer;
 
+    [SerializeField] private GameObject zero;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject scorePanel;
     [SerializeField] private TextMeshProUGUI scoreTimeText;
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         if (IsGameOver)
         {
             GameOver();
+            zero.SetActive(true);
         }
         else if (!IsGameOver)
         {
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
         if (!IsGameOver && IsGameSucces)
         {
             Score();
+            zero.SetActive(true);
         }
         if (TimeHasStarted)
         {

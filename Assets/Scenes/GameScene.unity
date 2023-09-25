@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739e29be7bed3845a730576af9c36b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zero: {fileID: 484484778}
   gameOverPanel: {fileID: 1094041210}
   scorePanel: {fileID: 1305849536}
   scoreTimeText: {fileID: 256873665}

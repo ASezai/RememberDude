@@ -9,15 +9,24 @@ public class OpenNumber : MonoBehaviour
 
     [SerializeField] private int clickedNumber;
 
-    public static int SearchedNumber;
+    public static int SearchedNumber = 1;
+    public static int GameHasStarted = 0;
+
+    private void Update()
+    {
+        if (GameManager.IsGameOver)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnMouseDown()
     {
-
         if (Input.GetMouseButton(0))
         {
             gameObject.GetComponent<SpriteRenderer>().material.SetColor("_Color", UncoverColor);
             CheckNumber(clickedNumber);
+            GameHasStarted = 1;
         }
     }
 
@@ -25,19 +34,17 @@ public class OpenNumber : MonoBehaviour
     {
         if (ClickedNumber == SearchedNumber) // Continue
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
         else if (ClickedNumber != SearchedNumber)  // Game Over and Restart
         {
             GameManager.TimeHasStarted = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             GameManager.IsGameOver = true;
             SearchedNumber = 0;
         }
         if (ClickedNumber == SearchedNumber && SearchedNumber == 9) // If all numbers are opened correctly, the game ends
         {
             GameManager.TimeHasStarted = false;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             GameManager.IsGameSucces = true;
             GameManager.IsGameOver = false;
             SearchedNumber = 0;
