@@ -19,19 +19,16 @@ public class ShowNumbers : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             FillPositions();
-            Debug.Log(OpenNumber.SearchedNumber);
-            Debug.Log(GameManager.LevelNumberCount);
-
+            
             OpenNumber.GameHasStarted = 0;
 
-            GameManager.IsGameOver = false;
-            GameManager.IsGameSuccess = false;
-            GameManager.TimeHasStarted = true;
-            GameManager.Timer = GameManager.LevelNumberCount;
+            GameManager.Instance.GameHasStarted();
+            GameManager.Instance.TimeHasStarted = true;
+            GameManager.Instance.Timer = GameManager.Instance.ExtraTime;
 
             gameObject.SetActive(false);
 
-            for (int i = 0; i < GameManager.LevelNumberCount; i++)
+            for (int i = 0; i < GameManager.Instance.LevelNumberCount; i++)
             {
                 spawnPosition = GetRandomPosition();
                 Instantiate(Numbers[i], spawnPosition, Quaternion.identity);
@@ -44,7 +41,6 @@ public class ShowNumbers : MonoBehaviour
     {
         if (availablePositions.Count == 0)
         {
-            Debug.Log("pos yok");
             return Vector2.zero;
         }
 

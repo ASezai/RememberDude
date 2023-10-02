@@ -14,7 +14,7 @@ public class OpenNumber : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.IsGameOver)
+        if (GameManager.Instance.IsGameOver)
         {
             Destroy(gameObject);
         }
@@ -38,15 +38,14 @@ public class OpenNumber : MonoBehaviour
         }
         else if (ClickedNumber != SearchedNumber)  // Game Over and Restart
         {
-            GameManager.TimeHasStarted = false;
-            GameManager.IsGameOver = true;
+            GameManager.Instance.TimeHasStarted = false;
+            GameManager.Instance.GameOver();
             SearchedNumber = 0;
         }
-        if (ClickedNumber == SearchedNumber && SearchedNumber == 9) // If all numbers are opened correctly, the game ends
+        if (ClickedNumber == SearchedNumber && SearchedNumber == GameManager.Instance.LevelNumberCount) // If all numbers are opened correctly, the game ends
         {
-            GameManager.TimeHasStarted = false;
-            GameManager.IsGameSuccess = true;
-            GameManager.IsGameOver = false;
+            GameManager.Instance.TimeHasStarted = false;
+            GameManager.Instance.Score();
             SearchedNumber = 0;
         }
         SearchedNumber = SearchedNumber + 1;
